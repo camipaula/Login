@@ -1,0 +1,101 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+@inject ILogger<Index> Logger
+
+<style>
+    body {
+        background-color: #3498db; /* Azul */
+        color: #2c3e50; /* Color del texto */
+        margin: 0; /* Eliminar márgenes predeterminados del cuerpo */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Establecer la fuente del texto */
+    }
+
+    .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        text-align: center;
+        padding: 60px;
+        border: 1px solid #3498db; /* Borde delgado azul */
+        border-radius: 8px;
+        background-color: #ecf0f1; /* Gris claro */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #2c3e50; /* Color del texto dentro del recuadro */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Aumentar el espacio entre grupos de formulario */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        appearance: none; /* Eliminar la apariencia predeterminada del combobox */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #ecf0f1; /* Gris claro */
+        border: 1px solid #bdc3c7; /* Borde gris claro */
+        border-radius: 6px;
+        cursor: pointer;
+        color: #34495e; /* Color del texto dentro del combobox */
+    }
+
+        .form-control::after {
+            content: '\25BC'; /* Código de la flecha hacia abajo */
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Evitar que la flecha sea clickeable */
+        }
+
+    .btn-ingresar {
+        background-color: #e67e22; /* Naranja */
+        color: #fff; /* Color del texto del botón */
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        text-decoration: none; /* Evitar subrayado en el enlace */
+        display: inline-block;
+        font-size: 16px;
+        transition: background-color 0.3s; /* Agregar transición al color de fondo */
+    }
+
+        .btn-ingresar:hover {
+            background-color: #d35400; /* Naranja más oscuro al pasar el mouse */
+        }
+</style>
+
+<div class="login-wrapper">
+    <div class="login-container">
+        <h1 style="color: #3498db;">Log in</h1>
+
+        <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="empresas">Empresas:</label>
+            <select id="empresas" class="form-control">
+                <option value="empresa1">Empresa 1</option>
+                <option value="empresa2">Empresa 2</option>
+                <option value="empresa3">Empresa 3</option>
+            </select>
+        </div>
+
+        <NavLink href="/FetchData" class="btn-ingresar">Ingresar</NavLink>
+    </div>
+</div>
