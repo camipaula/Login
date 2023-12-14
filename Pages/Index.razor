@@ -1,7 +1,20 @@
 ﻿@page "/"
+@using Interfaz_Login.Data
+@using Interfaz_Login.Models
 @inject NavigationManager NavigationManager
-
 @inject ILogger<Index> Logger
+@inject ApiService ApiService
+
+@code {
+    public List<Emisor> emisors = new List<Emisor>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        emisors = await ApiService.emisors();
+        
+    }
+}
+
 
 <style>
     body {
@@ -90,12 +103,14 @@
         <div class="form-group">
             <label for="empresas">Empresas:</label>
             <select id="empresas" class="form-control">
-                <option value="empresa1">Empresa 1</option>
-                <option value="empresa2">Empresa 2</option>
-                <option value="empresa3">Empresa 3</option>
+                @foreach (Emisor e in emisors)
+                {
+                    <option value="@e.Codigo">@e.Codigo : @e.NombreEmisor</option>
+                }
             </select>
         </div>
 
-        <NavLink href="/FetchData" class="btn-ingresar">Ingresar</NavLink>
+
+        <NavLink href="/FetchData" class="btn-ingresar">Ingresar </NavLink>
     </div>
-</div>
+    </div>
